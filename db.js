@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   },
 });
 
-async function testDatabaseConnection() {
+async function testConnection() {
   try {
     await sequelize.authenticate();
     console.log('Conexión a la base de datos exitosa.');
@@ -35,7 +35,7 @@ async function syncDatabase() {
   
   // Ejecutar la sincronización y conexión al iniciar la aplicación
   async function initializeDatabase() {
-    await testDatabaseConnection();
+    await testConnection();
     await syncDatabase();
   }
   
