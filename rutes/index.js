@@ -1,7 +1,7 @@
 // routes/index.js
 const express = require('express');
 const app = express.Router();
-const productController = require('../controllers/productController');
+const productController = require("../controllers/productCotroller.js");
 
 
 
