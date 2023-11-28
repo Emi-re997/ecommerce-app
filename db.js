@@ -3,7 +3,13 @@ const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
-  logging: true, // Cambiar a false en producción para evitar la salida de consultas SQL en la consola
+  logging: true, // Puedes cambiarlo a false en producción para evitar la salida de las consultas SQL en la consola
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Configuración para aceptar certificados no válidos (¡ten cuidado en producción!)
+    },
+  },
 });
 
 async function testDatabaseConnection() {
