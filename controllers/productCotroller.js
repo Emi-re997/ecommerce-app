@@ -7,7 +7,8 @@ async function getAllProducts(req, res) {
     const products = await Product.findAll();
     res.json(products);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error al obtener productos:', error.message);
+    res.status(500).json({ error: 'Error al obtener productos' });
   }
 }
 
@@ -22,7 +23,8 @@ async function getProductById(req, res) {
       res.status(404).json({ message: 'Producto no encontrado' });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error al obtener un producto por ID:', error.message);
+    res.status(500).json({ error: 'Error al obtener un producto por ID' });
   }
 }
 
@@ -30,9 +32,15 @@ async function getProductById(req, res) {
 async function createProduct(req, res) {
   const { name, price, description } = req.body;
   try {
+    if (!name || !price) {
+      throw new Error('El nombre y el precio son campos obligatorios');
+    }
+
+    // Crea un nuevo producto
     const newProduct = await Product.create({ name, price, description });
     res.status(201).json(newProduct);
   } catch (error) {
+    console.error('Error al crear un nuevo producto:', error.message);
     res.status(400).json({ error: error.message });
   }
 }
@@ -53,6 +61,7 @@ async function updateProductById(req, res) {
       res.status(404).json({ message: 'Producto no encontrado' });
     }
   } catch (error) {
+    console.error('Error al actualizar un producto por ID:', error.message);
     res.status(400).json({ error: error.message });
   }
 }
@@ -69,7 +78,8 @@ async function deleteProductById(req, res) {
       res.status(404).json({ message: 'Producto no encontrado' });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('Error al eliminar un producto por ID:', error.message);
+    res.status(500).json({ error: 'Error al eliminar un producto por ID' });
   }
 }
 
