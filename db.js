@@ -1,7 +1,9 @@
 // db.js
 const { Sequelize } = require('sequelize');
+const database = process.env.DATABASE
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+console.log(database , process.env.DATABASE)
+const sequelize = new Sequelize(process.env.DATABASE, {
   dialect: 'postgres',
   logging: true, // Puedes cambiarlo a false en producción para evitar la salida de las consultas SQL en la consola
   dialectOptions: {
