@@ -1,6 +1,6 @@
 const express = require("express");
 const tokenJ = express()
-const secretKey = "clave";
+const secretKey = process.env.SECRETKEY
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 
