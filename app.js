@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use('/api', router); // Puedes ajustar la ruta base según tus necesidades
 
-app.use("/api", tokenJ)
+app.use("/secure", tokenJ)
 
 
 app.listen(PORT, () => {
