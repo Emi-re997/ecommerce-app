@@ -27,12 +27,10 @@ const Product = sequelize.define('Product', {
 
   isFeatured: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
     defaultValue: false,
   },  
   isActive: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
     defaultValue: true,
   },
   createdAt: {
@@ -47,7 +45,6 @@ const Product = sequelize.define('Product', {
   //con esta clave id vamos a poder referenciar a productos en la tabla de categorias
   categoryId: {
     type: DataTypes.UUID,
-    allowNull: true,
     references: {
       model: Category,
       key: 'id',
