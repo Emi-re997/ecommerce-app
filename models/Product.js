@@ -54,6 +54,7 @@ const Product = sequelize.define('Product', {
       key: 'id',
     }
   },
+  
 });
 // Establecer la relación entre Product y Category
 //Se utulizo belongTo para indicar que un producto pertenece a una categoria
