@@ -37,7 +37,7 @@ async function createProduct(req, res) {
     }
 
     // Crea un nuevo producto
-    const newProduct = await Product.create({ name, price, description });
+    const newProduct = await Product.create({ name, price, description, imageUrl, stockQuantity, isFeatured, isActive });
     res.status(201).json(newProduct);
   } catch (error) {
     console.error('Error al crear un nuevo producto:', error.message);
