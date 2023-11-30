@@ -48,6 +48,7 @@ const Product = sequelize.define('Product', {
   categoryId: {
     type: DataTypes.UUID,
     allowNull: false,
+    defaultValue: 'valor_predeterminado',
     references: {
       model: Category,
       key: 'id',
