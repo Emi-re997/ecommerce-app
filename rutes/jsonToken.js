@@ -33,12 +33,12 @@ tokenJ.post('/login', (req, res) => {
     const { username, password } = req.body;
   
     // Simula una autenticación exitosa
-    if (username === 'usuario' && password === 'contraseña') {
+    if (username === 'Admin' && password === 'Admin') {
       // Genera un token JWT
       const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
   
       // Envia el token como respuesta
-      res.json({ token });
+      res.status(200).json({ token });
     } else {
       res.status(401).json({ error: 'Credenciales inválidas' });
     }
