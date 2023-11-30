@@ -30,7 +30,7 @@ async function getProductById(req, res) {
 
 // Crear un nuevo producto
 async function createProduct(req, res) {
-  const { name, price, description } = req.body;
+  const { name, price, description, imageUrl, stockQuantity, isFeatured, isActive } = req.body;
   try {
     if (!name || !price) {
       throw new Error('El nombre y el precio son campos obligatorios');
@@ -48,7 +48,7 @@ async function createProduct(req, res) {
 // Actualizar un producto por ID
 async function updateProductById(req, res) {
   const productId = req.params.id;
-  const { name, price, description } = req.body;
+  const { name, price, description, imageUrl, stockQuantity, isFeatured, isActive } = req.body;
   try {
     const product = await Product.findByPk(productId);
     if (product) {
