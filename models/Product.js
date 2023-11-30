@@ -47,8 +47,7 @@ const Product = sequelize.define('Product', {
   //con esta clave id vamos a poder referenciar a productos en la tabla de categorias
   categoryId: {
     type: DataTypes.UUID,
-    allowNull: false,
-    defaultValue: 'valor_predeterminado',
+    allowNull: true,
     references: {
       model: Category,
       key: 'id',
