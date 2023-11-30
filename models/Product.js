@@ -47,14 +47,13 @@ const Product = sequelize.define('Product', {
   //con esta clave id vamos a poder referenciar a productos en la tabla de categorias
   categoryId: {
     type: DataTypes.UUID,
-    allowNull: true,
+    allowNull: false,
     references: {
       model: Category,
       key: 'id',
     }
   },
 });
-
 // Establecer la relación entre Product y Category
 //Se utulizo belongTo para indicar que un producto pertenece a una categoria
 Product.belongsTo(Category, { foreignKey: 'categoryId' });

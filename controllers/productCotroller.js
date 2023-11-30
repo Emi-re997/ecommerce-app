@@ -30,7 +30,7 @@ async function getProductById(req, res) {
 
 // Crear un nuevo producto
 async function createProduct(req, res) {
-  const { name, price, description, imageUrl, stockQuantity, isFeatured, isActive } = req.body;
+  const { name, price, description, imageUrl, stockQuantity, isFeatured, isActive, categoryId } = req.body;
   try {
     if (!name || !price) {
       throw new Error('El nombre y el precio son campos obligatorios');
@@ -41,6 +41,7 @@ async function createProduct(req, res) {
     res.status(201).json(newProduct);
   } catch (error) {
     console.error('Error al crear un nuevo producto:', error.message);
+    console.log(Product.categoryId)
     res.status(400).json({ error: error.message });
   }
 }
